@@ -27,5 +27,9 @@ public class AlgoController {
     public ResponseEntity<Boolean> isPerfect(@RequestParam int number){
         return new ResponseEntity<>(algoService.isPerfect(number), HttpStatus.OK);
     }
+    @PostMapping("/sumNumbers")
+    public ResponseEntity<Long> sumNumbers(@RequestParam int[] numbers){
 
+        return new ResponseEntity<>(algoService.sumNumbers(numbers), HttpStatus.OK);
+    }
 }
