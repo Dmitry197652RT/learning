@@ -167,10 +167,20 @@ public class AlgoService {
     }
 
     public boolean isNumber(int[] numbers){
-        //  метод под линендхешмап оценить сложность
 
         return Arrays.stream(numbers)
                 .allMatch(n -> n >=0 && n <=9);
+    }
+
+    public boolean isPrime(int sample){
+
+        //если остаток от деления числа равен нулю значит деление произошло
+        //делитель не должен быть единицей и самим числом
+        for(int i = 2; i<sample-1; i++){
+            if(sample % i == 0) return false;
+        }
+
+        return true;
     }
 
 }

@@ -48,7 +48,5 @@ public class ArithmeticService {
         audit.setCreatedAt(LocalDateTime.now());
         return audit;
     }
-    public void testOutput(){
-        System.out.println(new SampleModel().getDest());
-    }
+
 }

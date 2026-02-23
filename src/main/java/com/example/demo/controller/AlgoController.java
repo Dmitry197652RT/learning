@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.AlgoService;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,10 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("api/controller")
-@RequiredArgsConstructor
 public class AlgoController {
+    public AlgoController(AlgoService algoService) {
+        this.algoService = algoService;
+    }
+
     private final AlgoService algoService;
     /*
     Совершенное число — это положительное целое число,
@@ -49,4 +56,20 @@ public class AlgoController {
 
         return new ResponseEntity<>(algoService.findNonrepeatedNumber(numbers), HttpStatus.OK);
     }
+
+    // паттерн стратегия принять параметром способ реализации и в зависимости от этого выбрать метод
+    // реализации в сервисе принять из контроллера параметр метод, где может быть одно из двух значений в енам
+     // простой или в стрим
+    @PostMapping("/isPrime")
+    public ResponseEntity<Boolean> isPrime(@RequestParam
+                                               @Min(value = 2, message = "Number have to be more than 2")
+                                               @Max(value=1000)
+                                               int sample)
+    {
+
+        return new ResponseEntity<>(algoService.isPrime(sample), HttpStatus.OK);
+
+    }
+// написать тесты и закоммитить
+    //повторить checked uncheked и создание кастомных ошибок exception handler restcontroller advice 
 }
