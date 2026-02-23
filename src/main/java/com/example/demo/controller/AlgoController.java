@@ -13,8 +13,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/controller")
-@RequiredArgsConstructor
 public class AlgoController {
+    public AlgoController(AlgoService algoService) {
+        this.algoService = algoService;
+    }
+
     private final AlgoService algoService;
     /*
     Совершенное число — это положительное целое число,
@@ -49,4 +52,15 @@ public class AlgoController {
 
         return new ResponseEntity<>(algoService.findNonrepeatedNumber(numbers), HttpStatus.OK);
     }
+
+    // паттерн стратегия принять параметром способ реализации и в зависимости от этого выбрать метод
+    // реализации в сервисе принять из контроллера параметр метод, где может быть одно из двух значений в енам
+     // простой или в стрим
+    @PostMapping("/isPrime")
+    public ResponseEntity<Boolean> isPrime(@RequestParam int sample){
+
+        return new ResponseEntity<>(algoService.isPrime(sample), HttpStatus.OK);
+
+    }
+
 }
