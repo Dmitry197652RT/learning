@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/controller")
 @RequiredArgsConstructor
@@ -31,5 +33,20 @@ public class AlgoController {
     public ResponseEntity<Long> sumNumbers(@RequestParam int[] numbers){
 
         return new ResponseEntity<>(algoService.sumNumbers(numbers), HttpStatus.OK);
+    }
+    @PostMapping("/findnonrepeatednumber")
+    public ResponseEntity<Integer> findNonRepeatedNumber(@RequestParam int[] numbers){
+        return new ResponseEntity<>(algoService.findNonrepeatedNumber(numbers), HttpStatus.OK);
+    }
+    @PostMapping("/findnonrepeatednumbers")
+    public ResponseEntity<List<Integer>> findUniueNumbers(@RequestParam  int[] numbers){
+        return new ResponseEntity<>(algoService.findUniueNumbers(numbers), HttpStatus.OK);
+    }
+
+    @PostMapping("/findnonrepeatednumberonstream")
+    public ResponseEntity<Integer> findNonRepeatedNumberWithStream(@RequestParam int[] numbers){
+        if(algoService.findNonrepeatedNumberOnStream(numbers) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(algoService.findNonrepeatedNumber(numbers), HttpStatus.OK);
     }
 }
