@@ -16,9 +16,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/arithmetics")
-@RequiredArgsConstructor
 public class AriphmeticController {
 
+    public AriphmeticController(ArithmeticService arithmeticService) {
+        this.arithmeticService = arithmeticService;
+    }
 
     private final ArithmeticService arithmeticService;
 
