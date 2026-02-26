@@ -71,5 +71,15 @@ public class AlgoController {
 
     }
 // написать тесты и закоммитить
-    //повторить checked uncheked и создание кастомных ошибок exception handler restcontroller advice 
+    //повторить checked uncheked и создание кастомных ошибок exception handler restcontroller advice
+
+  //  На вход подается строка, содержащая различные скобки: (), {}, []. Нужно проверить,
+  //  правильно ли они расставлены (каждой открывающей соответствует закрывающая, и порядок соблюдается).
+
+    @PostMapping("/validbraket")
+    public ResponseEntity<Boolean> isValidBrakets( @RequestParam String brakets){
+
+
+        return new ResponseEntity<>(algoService.isValidDBrakets(brakets), HttpStatus.OK);
+    }
 }

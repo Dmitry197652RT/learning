@@ -18,8 +18,23 @@ public class MainForPrefix {
         int[] sample = {1, 1, 1, 2, 1, 1, 1};
         SubArraysEqualK subArraysEqualK = new SubArraysEqualK();
         System.out.println(subArraysEqualK.countSubArrays(sample, 3));
+        SumOfTwoPointers sumOfTwoPointers = new SumOfTwoPointers();
+        int[] numbers = {2,7,11,15};
+        int target = 9;
 
+        int[] dt = sumOfTwoPointers.solution(numbers, target);
+        System.out.println(dt[0] + " " + dt[1]);
+        int[] water = {1,8,6,2,5,4,8,3,7};
+        ContainsTheMostWater containsTheMostWater = new ContainsTheMostWater();
+        System.out.println(containsTheMostWater.containsTheMostWater(water));
+        TwoPointers twoPointers = new TwoPointers();
+        int[] water2 = {1,8,6,2,5,4,8,3,7};
+        System.out.println(" " + twoPointers.maxArea(water2));
+
+        BinarySearch binarySearch = new BinarySearch();
+        System.out.println(binarySearch.search(numbers, 15));
     }
+
 
 
 }

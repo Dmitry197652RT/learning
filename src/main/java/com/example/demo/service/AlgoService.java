@@ -55,7 +55,7 @@ public class AlgoService {
             throw new IllegalArgumentException(" Numbers id empty");
 
         }
-        if(!isNumber(numbers)){
+        if (!isNumber(numbers)) {
             throw new IllegalArgumentException("Arguments are not numbers");
         }
 
@@ -124,7 +124,7 @@ public class AlgoService {
 
     }
 
-    public List<Integer> findUniueNumbers(int[] numbers){
+    public List<Integer> findUniueNumbers(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException();
         }
@@ -144,7 +144,7 @@ public class AlgoService {
                 .collect(Collectors.toList());
     }
 
-    public Integer findNonrepeatedNumberOnStream(int[] numbers){
+    public Integer findNonrepeatedNumberOnStream(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException();
         }
@@ -154,33 +154,55 @@ public class AlgoService {
                         Function.identity(),// метод сортирует ключи мапы
                         LinkedHashMap::new,// создается новый обьект линкедхашмап
                         Collectors.counting()))
-                        .entrySet()
+                .entrySet()
                 .stream()
-                .filter(entry ->entry.getKey() == 1)
+                .filter(entry -> entry.getKey() == 1)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Уникальные элементы не найдены!"))
-                .getKey();;
+                .getKey();
+        ;
 
 
         return result;
 
     }
 
-    public boolean isNumber(int[] numbers){
+    public boolean isNumber(int[] numbers) {
 
         return Arrays.stream(numbers)
-                .allMatch(n -> n >=0 && n <=9);
+                .allMatch(n -> n >= 0 && n <= 9);
     }
 
-    public boolean isPrime(int sample){
+    public boolean isPrime(int sample) {
 
         //если остаток от деления числа равен нулю значит деление произошло
         //делитель не должен быть единицей и самим числом
-        for(int i = 2; i<sample-1; i++){
-            if(sample % i == 0) return false;
+        for (int i = 2; i < sample - 1; i++) {
+            if (sample % i == 0) return false;
         }
 
         return true;
     }
 
+    // На вход подается строка, содержащая различные скобки: (), {}, []. Нужно проверить,
+    // правильно ли они расставлены (каждой открывающей соответствует закрывающая, и порядок соблюдается).
+    public boolean isValidDBrakets(String source) {
+
+        // TODO использовать стрингбилдер
+        // оценить сложность алгоритма
+        // придумать алгоритм который восприимчив к трем типам скобок
+        // использовать stack ( -> кладем в стэк каждого типа скобок
+        if (source.charAt(0) == ')') {
+            return false;
+        }
+        while (true) {
+            if("".equals(source)){
+                return true;}
+            if (source.contains("()")) {
+                source = source.replace("()", "");
+            } else return false;
+            System.out.println(source);
+        }
+
+    }
 }
