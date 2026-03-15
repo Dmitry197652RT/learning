@@ -15,7 +15,7 @@ public class MainForPrefix {
         PrefixSum prefixSum = new PrefixSum();
         int[] result = prefixSum.makeTask(task);
         System.out.println(result[0] + " " + result[1] + " " + result[2]);
-        int[] sample = {1, 1, 1, 2, 1, 1, 1};
+        int[] sample = {1,0, 1, 1, 2, 0, 1, 1, 1};
         SubArraysEqualK subArraysEqualK = new SubArraysEqualK();
         System.out.println(subArraysEqualK.countSubArrays(sample, 3));
         SumOfTwoPointers sumOfTwoPointers = new SumOfTwoPointers();
@@ -33,6 +33,19 @@ public class MainForPrefix {
 
         BinarySearch binarySearch = new BinarySearch();
         System.out.println(binarySearch.search(numbers, 15));
+        MaxInt maxInt = new MaxInt();
+        int sa = 445778645;
+        System.out.println(maxInt.makeMax(sa));
+
+        NullToEnd nullToEnd = new NullToEnd();
+        int[] resultw = nullToEnd.sorting(sample);
+        System.out.println(resultw[resultw.length-1] + " " + resultw[resultw.length-2] );
+
+        BinarySearch2 binarySearch2 = new BinarySearch2();
+
+        System.out.println(1 + " " + binarySearch2.binSearch(water2, 2));
+        System.out.println(binarySearch2.standartBinSearch(water2, 2));
+
     }
 
 
