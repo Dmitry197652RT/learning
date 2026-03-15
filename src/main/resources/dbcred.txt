@@ -1,0 +1,10 @@
+docker run --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e
+POSTGRES_DB=algo_database -p 5432:5432 -d postgres:latest
+
+Vault
+
+несколько методов привязать
+расширить таблицу
+узнать почему не показывает таблицу в идее
+выгрузить обновление на гит
+написать тесты к методам контроллера 
